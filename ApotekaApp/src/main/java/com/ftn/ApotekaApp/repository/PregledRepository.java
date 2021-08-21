@@ -10,5 +10,5 @@ import java.util.List;
 
 public interface PregledRepository extends JpaRepository<Pregled, Long> {
 
-    List<Pregled> findByIzvestajNotNullAndPacijent(Pacijent pacijent);
+    List<Pregled> findByIzvrsenAndPacijent(boolean izvrsen, Pacijent pacijent);
 }

@@ -1,15 +1,13 @@
 package com.ftn.ApotekaApp.controller;
 
-import com.ftn.ApotekaApp.dto.ApotekaDTO;
 import com.ftn.ApotekaApp.dto.PregledDTO;
-import com.ftn.ApotekaApp.helper.ApotekaMapper;
+import com.ftn.ApotekaApp.dto.SavetovanjeDTO;
 import com.ftn.ApotekaApp.helper.PregledMapper;
-import com.ftn.ApotekaApp.model.Apoteka;
-import com.ftn.ApotekaApp.model.Korisnik;
+import com.ftn.ApotekaApp.helper.SavetovanjeMapper;
 import com.ftn.ApotekaApp.model.Pacijent;
 import com.ftn.ApotekaApp.model.Pregled;
-import com.ftn.ApotekaApp.service.PregledService;
-import org.hibernate.Hibernate;
+import com.ftn.ApotekaApp.model.Savetovanje;
+import com.ftn.ApotekaApp.service.SavetovanjeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -21,21 +19,18 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
-import java.util.Set;
-import java.util.stream.Collectors;
 
 @RestController
-@RequestMapping("/examinations")
-public class PregledController {
+@RequestMapping("/consultations")
+public class SavetovanjeController {
 
     @Autowired
-    private PregledService pregledService;
+    private SavetovanjeService savetovanjeService;
 
-    private PregledMapper pregledMapper;
+    private SavetovanjeMapper savetovanjeMapper;
 
-    public PregledController() {
-        this.pregledMapper = new PregledMapper();
+    public SavetovanjeController() {
+        this.savetovanjeMapper = new SavetovanjeMapper();
     }
 
     @PreAuthorize("hasRole('ROLE_PACIJENT')")
@@ -43,22 +38,21 @@ public class PregledController {
     public ResponseEntity<?> getHistory() {
         Pacijent userDetails = (Pacijent) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         try {
-            List<Pregled> pregledi = pregledService.findHistory(userDetails);
+            List<Savetovanje> savetovanja = savetovanjeService.findHistory(userDetails);
             //Hibernate.initialize(userDetails.getPregledi());
             //List<Pregled> pregledi = userDetails.getPregledi().stream().filter(Pregled::getIzvrsen).collect(Collectors.toList());
             //List<Pregled> pregledi = pregledService.findAll();
-            return new ResponseEntity<>(getDTOList(pregledi), HttpStatus.OK);
+            return new ResponseEntity<>(getDTOList(savetovanja), HttpStatus.OK);
         } catch (Exception e) {
             e.printStackTrace();
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
     }
 
-    private List<PregledDTO> getDTOList(List<Pregled> apoteke) {
-        List<PregledDTO> list = new ArrayList<>();
-        for(Pregled pregled: apoteke)
-            list.add(pregledMapper.toDto(pregled));
+    private List<SavetovanjeDTO> getDTOList(List<Savetovanje> apoteke) {
+        List<SavetovanjeDTO> list = new ArrayList<>();
+        for(Savetovanje savetovanje: apoteke)
+            list.add(savetovanjeMapper.toDto(savetovanje));
         return list;
     }
-
 }

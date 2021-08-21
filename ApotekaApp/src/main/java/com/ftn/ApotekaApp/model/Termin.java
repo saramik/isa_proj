@@ -9,7 +9,7 @@ public class Termin {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "termin_generator")
-    @SequenceGenerator(name="termin_generator",initialValue = 2, sequenceName = "termin_seq")
+    @SequenceGenerator(name="termin_generator",initialValue = 3, sequenceName = "termin_seq")
     @Column(name = "id", updatable = false, nullable = false)
     private Long id;
 

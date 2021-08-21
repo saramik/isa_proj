@@ -114,4 +114,6 @@ public class Pacijent extends Korisnik{
     public void setSavetovanja(Set<Savetovanje> savetovanja) {
         this.savetovanja = savetovanja;
     }
+
+
 }

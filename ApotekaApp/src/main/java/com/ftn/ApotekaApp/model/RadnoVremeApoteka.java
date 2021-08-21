@@ -4,6 +4,7 @@ import javax.persistence.*;
 import java.time.LocalTime;
 
 @Entity
+@Table(name="radnovremeapoteka")
 public class RadnoVremeApoteka {
 
     @Id

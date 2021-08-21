@@ -7,7 +7,7 @@ import javax.persistence.*;
 public class Pregled extends Radnja {
 
     @ManyToOne()
-    @JoinColumn(name="tipPregleda_id", nullable=false)
+    @JoinColumn(name="tipPregleda_id")
     private TipPregleda tipPregleda;
 
     @Column(name="izvrsen", unique=false, nullable=false)
@@ -16,7 +16,7 @@ public class Pregled extends Radnja {
     @Column(name = "definisan", unique = false, nullable = false)
     private Boolean definisan;
 
-    @ManyToOne()
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="pacijent_id", nullable=false)
     private Pacijent pacijent;
 

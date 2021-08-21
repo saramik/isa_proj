@@ -6,6 +6,7 @@ import com.ftn.ApotekaApp.model.Pregled;
 import com.ftn.ApotekaApp.repository.PregledRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -25,8 +26,9 @@ public class PregledService implements ServiceInterface<Pregled>{
         return null;
     }
 
+
     public List<Pregled> findHistory(Pacijent pacijent) {
-        return pregledRepository.findByIzvestajNotNullAndPacijent(pacijent);
+        return pregledRepository.findByIzvrsenAndPacijent(true, pacijent);
     }
 
     @Override
