@@ -14,7 +14,10 @@ public class Rezervacija {
     @Column(name = "id", updatable = false, nullable = false)
     private Long id;
 
-    @OneToMany(mappedBy="id")
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(name = "rezervacija_lekovi",
+            joinColumns = @JoinColumn(name = "rezervacija_id", referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(name = "lek_id", referencedColumnName = "id"))
     private Set<Lek> lekovi;
 
     @Column
