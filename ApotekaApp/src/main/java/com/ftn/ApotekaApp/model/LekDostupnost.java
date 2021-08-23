@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.util.Set;
 
 @Entity
-@Table(name="lekdostupnost")
+@Table(name="lek_dostupnost")
 public class LekDostupnost {
 
     @Id

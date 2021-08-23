@@ -16,6 +16,12 @@ public class LekDTO {
     public LekDTO() {
     }
 
+    public LekDTO(Long id, String naziv, String sifra) {
+        this.id = id;
+        this.naziv = naziv;
+        this.sifra = sifra;
+    }
+
     public Long getId() {
         return id;
     }

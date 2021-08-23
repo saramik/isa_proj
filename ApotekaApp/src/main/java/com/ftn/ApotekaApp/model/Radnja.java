@@ -10,7 +10,7 @@ import static javax.persistence.InheritanceType.SINGLE_TABLE;
 @Entity
 @Table(name="radnje")
 @Inheritance(strategy=SINGLE_TABLE)
-@SequenceGenerator(name="akcije_generator",initialValue = 3 ,sequenceName = "radnja_seq")
+@SequenceGenerator(name="radnja_generator",initialValue = 5 ,sequenceName = "radnja_seq")
 @DiscriminatorColumn(name="type", discriminatorType=STRING)
 public class Radnja {
 

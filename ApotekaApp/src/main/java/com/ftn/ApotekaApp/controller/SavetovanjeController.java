@@ -34,14 +34,24 @@ public class SavetovanjeController {
     }
 
     @PreAuthorize("hasRole('ROLE_PACIJENT')")
-    @GetMapping()
+    @GetMapping("/history")
     public ResponseEntity<?> getHistory() {
         Pacijent userDetails = (Pacijent) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         try {
-            List<Savetovanje> savetovanja = savetovanjeService.findHistory(userDetails);
-            //Hibernate.initialize(userDetails.getPregledi());
-            //List<Pregled> pregledi = userDetails.getPregledi().stream().filter(Pregled::getIzvrsen).collect(Collectors.toList());
-            //List<Pregled> pregledi = pregledService.findAll();
+            List<Savetovanje> savetovanja = savetovanjeService.findHistory(true, userDetails);
+            return new ResponseEntity<>(getDTOList(savetovanja), HttpStatus.OK);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+    }
+
+    @PreAuthorize("hasRole('ROLE_PACIJENT')")
+    @GetMapping("/appointments")
+    public ResponseEntity<?> getAppointments() {
+        Pacijent userDetails = (Pacijent) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        try {
+            List<Savetovanje> savetovanja = savetovanjeService.findHistory(false, userDetails);
             return new ResponseEntity<>(getDTOList(savetovanja), HttpStatus.OK);
         } catch (Exception e) {
             e.printStackTrace();

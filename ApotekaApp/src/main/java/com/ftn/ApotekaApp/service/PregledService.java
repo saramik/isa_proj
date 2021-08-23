@@ -23,12 +23,12 @@ public class PregledService implements ServiceInterface<Pregled>{
 
     @Override
     public Pregled findOne(Long id) {
-        return null;
+        return pregledRepository.findById(id).orElseGet(null);
     }
 
 
-    public List<Pregled> findHistory(Pacijent pacijent) {
-        return pregledRepository.findByIzvrsenAndPacijent(true, pacijent);
+    public List<Pregled> findHistory(boolean izvrsen, Pacijent pacijent) {
+        return pregledRepository.findByIzvrsenAndPacijent(izvrsen, pacijent);
     }
 
     @Override
@@ -43,6 +43,6 @@ public class PregledService implements ServiceInterface<Pregled>{
 
     @Override
     public void delete(Long id) throws Exception {
-
+        pregledRepository.deleteById(id);
     }
 }

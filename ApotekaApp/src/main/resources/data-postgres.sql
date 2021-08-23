@@ -35,10 +35,21 @@ SET row_security = off;
 --
 -- INSERT INTO public.radnje (id, datum, type, izvrsen, definisan, termin_id, strlice_id, pacijent_id, tip_pregleda_id) VALUES (1, '2021-6-25', 'P', true, false, 1, 2, 1, 1);
 -- INSERT INTO public.radnje (id, datum, type, izvrsen, definisan, termin_id, strlice_id, pacijent_id) VALUES (2, '2021-6-26', 'S', true, false, 2, 3, 1);
+-- INSERT INTO public.radnje (id, datum, type, izvrsen, definisan, termin_id, strlice_id, pacijent_id, tip_pregleda_id) VALUES (3, '2021-8-24', 'P', false, false, 1, 2, 1, 1);
+-- INSERT INTO public.radnje (id, datum, type, izvrsen, definisan, termin_id, strlice_id, pacijent_id, tip_pregleda_id) VALUES (4, '2021-8-30', 'P', false, false, 1, 2, 1, 1);
+--
 --
 --
 -- INSERT INTO public.dijagnoze (id, tip) VALUES (1, 0);
 --
+-- INSERT INTO public.specifikacija (id, kontraindikacija, preporuceni_unos, proizvodjac, sastav) VALUES (1, 'Kontraindikacija 1', 2, 'Hemofarm', 'Sastav 1');
+--
+-- INSERT INTO public.lek (id, naziv, oblik_leka, rezim, sifra, tip_leka, specifikacija_id) VALUES (1, 'Bromazepam', 2, true, '111', 0, 1);
+--
+-- INSERT INTO public.lek_dostupnost (id, kolicina, apoteka_id, lek_id) VALUES (1, 100, 1, 1);
+--
 -- INSERT INTO public.erecept (id, datum_izdavanja, status, pacijent_id) VALUES (1, '2021-6-25', 0, 1);
 --
 -- INSERT INTO public.izvestaji (id, informacije, dijagnoza_id, recept_id, radnja_id) VALUES (1, 'informacije', 1, 1, 1);
+
+-- INSERT INTO public.erecept_lekovi (erecept_id, lek_id) VALUES (1, 1);

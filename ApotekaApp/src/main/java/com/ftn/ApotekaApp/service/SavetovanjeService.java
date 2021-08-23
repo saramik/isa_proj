@@ -25,7 +25,7 @@ public class SavetovanjeService implements ServiceInterface<Savetovanje>{
         return null;
     }
 
-    public List<Savetovanje> findHistory(Pacijent pacijent) {
+    public List<Savetovanje> findHistory(boolean izvrsen, Pacijent pacijent) {
         return repository.findByIzvrsenAndPacijent(true, pacijent);
     }
 
