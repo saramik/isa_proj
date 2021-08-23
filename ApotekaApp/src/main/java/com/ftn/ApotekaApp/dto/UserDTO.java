@@ -36,6 +36,8 @@ public class UserDTO {
 
     private List<LekDTO> alergijeLekovi;
 
+    private int penali;
+
     public UserDTO(Korisnik u){
         this.email = u.getEmail();
         this.password = u.getPassword();
@@ -62,6 +64,19 @@ public class UserDTO {
         this.drzava = drzava;
         this.broj = broj;
         this.alergijeLekovi = alergijeLekovi;
+    }
+
+    public UserDTO(@NotBlank @Email String email, @NotBlank @Size(min = 4, message = "Password must be at least 4 characters long") String password, @NotBlank String ime, @NotBlank String prezime, @NotBlank String adresa, @NotBlank String grad, @NotBlank String drzava, @NotBlank String broj, List<LekDTO> alergijeLekovi, int penali) {
+        this.email = email;
+        this.password = password;
+        this.ime = ime;
+        this.prezime = prezime;
+        this.adresa = adresa;
+        this.grad = grad;
+        this.drzava = drzava;
+        this.broj = broj;
+        this.alergijeLekovi = alergijeLekovi;
+        this.penali = penali;
     }
 
     public String getIme() {
@@ -136,5 +151,13 @@ public class UserDTO {
 
     public void setAlergijeLekovi(List<LekDTO> alergijeLekovi) {
         this.alergijeLekovi = alergijeLekovi;
+    }
+
+    public int getPenali() {
+        return penali;
+    }
+
+    public void setPenali(int penali) {
+        this.penali = penali;
     }
 }

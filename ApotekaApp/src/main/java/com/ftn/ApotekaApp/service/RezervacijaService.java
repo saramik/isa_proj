@@ -40,6 +40,6 @@ public class RezervacijaService implements ServiceInterface<Rezervacija>{
 
     @Override
     public void delete(Long id) throws Exception {
-
+        repository.deleteById(id);
     }
 }

@@ -45,6 +45,7 @@ public class RadnjaController {
                 return new ResponseEntity<>("Ne moze se otkazati!", HttpStatus.NOT_FOUND);
 
             radnjaService.delete(appointmentId);
+
             return new ResponseEntity<>("Uspesno otkazano!", HttpStatus.OK);
         } catch (Exception e) {
             e.printStackTrace();

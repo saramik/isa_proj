@@ -1,11 +1,13 @@
 package com.ftn.ApotekaApp.helper;
 
+import com.ftn.ApotekaApp.dto.LekDTO;
 import com.ftn.ApotekaApp.dto.UserDTO;
 import com.ftn.ApotekaApp.model.Korisnik;
 import com.ftn.ApotekaApp.model.Lek;
 import com.ftn.ApotekaApp.model.Pacijent;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class PacijentMapper implements MapperInterface<Pacijent, UserDTO>{
     @Override
@@ -19,6 +21,9 @@ public class PacijentMapper implements MapperInterface<Pacijent, UserDTO>{
 
     @Override
     public UserDTO toDto(Pacijent entity) {
-        return null;
+        List<LekDTO> lekovi = new ArrayList<>();
+        for (Lek lek : entity.getAlergijaLekovi())
+            lekovi.add(new LekDTO(lek.getId(),lek.getNaziv(), lek.getSifra()));
+        return new UserDTO(entity.getEmail(), null, entity.getIme(), entity.getPrezime(), entity.getAdresa(), entity.getGrad(), entity.getDrzava(), entity.getBroj(), lekovi, entity.getPenali());
     }
 }
