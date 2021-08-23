@@ -13,8 +13,8 @@ SET row_security = off;
 -- TOC entry 3175 (class 0 OID 24026)
 -- Dependencies: 204
 -- Data for Name: authority; Type: TABLE DATA; Schema: public; Owner: postgres
---
---
+
+
 -- INSERT INTO public.authority (id, name) VALUES (1, 'ROLE_PACIJENT');
 -- INSERT INTO public.authority (id, name) VALUES (2, 'ROLE_DERMATOLOG');
 -- INSERT INTO public.authority (id, name) VALUES (3, 'ROLE_FARMACEUT');
@@ -40,5 +40,5 @@ SET row_security = off;
 -- INSERT INTO public.dijagnoze (id, tip) VALUES (1, 0);
 --
 -- INSERT INTO public.erecept (id, datum_izdavanja, status, pacijent_id) VALUES (1, '2021-6-25', 0, 1);
--- 
+--
 -- INSERT INTO public.izvestaji (id, informacije, dijagnoza_id, recept_id, radnja_id) VALUES (1, 'informacije', 1, 1, 1);
