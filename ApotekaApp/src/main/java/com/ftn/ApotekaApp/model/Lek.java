@@ -8,6 +8,7 @@ public class Lek {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "lek_generator")
+    @SequenceGenerator(name="lek_generator",initialValue = 2, sequenceName = "lek_seq")
     @Column(name = "id", updatable = false, nullable = false)
     private Long id;
 
