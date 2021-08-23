@@ -8,5 +8,5 @@ import java.util.List;
 
 public interface SavetovanjeRepository extends JpaRepository<Savetovanje, Long> {
 
-    List<Savetovanje> findByIzvrsenAndPacijent(boolean izvrsen, Pacijent pacijent);
+    List<Savetovanje> findAllByIzvrsenAndPacijent(boolean izvrsen, Pacijent pacijent);
 }

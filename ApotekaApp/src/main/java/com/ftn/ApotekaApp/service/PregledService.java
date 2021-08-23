@@ -28,7 +28,7 @@ public class PregledService implements ServiceInterface<Pregled>{
 
 
     public List<Pregled> findHistory(boolean izvrsen, Pacijent pacijent) {
-        return pregledRepository.findByIzvrsenAndPacijent(izvrsen, pacijent);
+        return pregledRepository.findAllByIzvrsenAndPacijent(izvrsen, pacijent);
     }
 
     @Override

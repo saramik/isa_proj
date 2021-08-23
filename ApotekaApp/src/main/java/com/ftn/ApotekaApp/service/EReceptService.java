@@ -2,6 +2,7 @@ package com.ftn.ApotekaApp.service;
 
 import com.ftn.ApotekaApp.model.ERecept;
 import com.ftn.ApotekaApp.model.Lek;
+import com.ftn.ApotekaApp.model.Pacijent;
 import com.ftn.ApotekaApp.repository.EReceptRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,6 +18,10 @@ public class EReceptService implements ServiceInterface<ERecept>{
     @Override
     public List<ERecept> findAll() {
         return repository.findAll();
+    }
+
+    public List<ERecept> findAllByPacijent(Pacijent pacijent) {
+        return repository.findByPacijent(pacijent);
     }
 
     @Override

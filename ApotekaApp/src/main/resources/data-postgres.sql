@@ -51,5 +51,7 @@ SET row_security = off;
 -- INSERT INTO public.erecept (id, datum_izdavanja, status, pacijent_id) VALUES (1, '2021-6-25', 0, 1);
 --
 -- INSERT INTO public.izvestaji (id, informacije, dijagnoza_id, recept_id, radnja_id) VALUES (1, 'informacije', 1, 1, 1);
-
+--
 -- INSERT INTO public.erecept_lekovi (erecept_id, lek_id) VALUES (1, 1);
+
+-- INSERT INTO public.rezervacija (id, datum, preuzeto, apoteka_id, pacijent_id) VALUES (1, '2021-7-25', true, 1, 1)

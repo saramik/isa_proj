@@ -17,7 +17,7 @@ public class SavetovanjeService implements ServiceInterface<Savetovanje>{
 
     @Override
     public List<Savetovanje> findAll() {
-        return null;
+        return repository.findAll();
     }
 
     @Override
@@ -26,7 +26,7 @@ public class SavetovanjeService implements ServiceInterface<Savetovanje>{
     }
 
     public List<Savetovanje> findHistory(boolean izvrsen, Pacijent pacijent) {
-        return repository.findByIzvrsenAndPacijent(true, pacijent);
+        return repository.findAllByIzvrsenAndPacijent(true, pacijent);
     }
 
     @Override

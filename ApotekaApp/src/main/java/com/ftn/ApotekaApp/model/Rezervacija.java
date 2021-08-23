@@ -27,12 +27,24 @@ public class Rezervacija {
     @Column
     private boolean preuzeto;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Pacijent pacijent;
+
     public Rezervacija() {}
 
     public Rezervacija(Long id, Set<Lek> lekovi, LocalDate datum) {
         this.id = id;
         this.lekovi = lekovi;
         this.datum = datum;
+    }
+
+    public Rezervacija(Long id, Set<Lek> lekovi, LocalDate datum, Apoteka apoteka, boolean preuzeto, Pacijent pacijent) {
+        this.id = id;
+        this.lekovi = lekovi;
+        this.datum = datum;
+        this.apoteka = apoteka;
+        this.preuzeto = preuzeto;
+        this.pacijent = pacijent;
     }
 
     public Long getId() {
@@ -57,5 +69,29 @@ public class Rezervacija {
 
     public void setDatum(LocalDate datum) {
         this.datum = datum;
+    }
+
+    public Apoteka getApoteka() {
+        return apoteka;
+    }
+
+    public void setApoteka(Apoteka apoteka) {
+        this.apoteka = apoteka;
+    }
+
+    public boolean isPreuzeto() {
+        return preuzeto;
+    }
+
+    public void setPreuzeto(boolean preuzeto) {
+        this.preuzeto = preuzeto;
+    }
+
+    public Pacijent getPacijent() {
+        return pacijent;
+    }
+
+    public void setPacijent(Pacijent pacijent) {
+        this.pacijent = pacijent;
     }
 }

@@ -1,13 +1,13 @@
 package com.ftn.ApotekaApp.controller;
 
-import com.ftn.ApotekaApp.dto.EReceptDTO;
 import com.ftn.ApotekaApp.dto.PregledDTO;
-import com.ftn.ApotekaApp.helper.EReceptMapper;
+import com.ftn.ApotekaApp.dto.RezervacijaDTO;
 import com.ftn.ApotekaApp.helper.PregledMapper;
-import com.ftn.ApotekaApp.model.ERecept;
+import com.ftn.ApotekaApp.helper.RezervacijaMapper;
 import com.ftn.ApotekaApp.model.Pacijent;
 import com.ftn.ApotekaApp.model.Pregled;
-import com.ftn.ApotekaApp.service.EReceptService;
+import com.ftn.ApotekaApp.model.Rezervacija;
+import com.ftn.ApotekaApp.service.RezervacijaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -21,35 +21,36 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
-@RequestMapping("/erecepts")
-public class EReceptController {
+@RequestMapping("/drugbookings")
+public class RezervacijaController {
 
     @Autowired
-    private EReceptService eReceptService;
+    private RezervacijaService rezervacijaService;
 
-    private EReceptMapper eReceptMapper;
+    private RezervacijaMapper rezervacijaMapper;
 
-    public EReceptController() {
-        this.eReceptMapper = new EReceptMapper();
+    public RezervacijaController() {
+        this.rezervacijaMapper = new RezervacijaMapper();
     }
 
     @PreAuthorize("hasRole('ROLE_PACIJENT')")
-    @GetMapping("/history")
+    @GetMapping("")
     public ResponseEntity<?> getHistory() {
         Pacijent userDetails = (Pacijent) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         try {
-            List<ERecept> erecepti = eReceptService.findAllByPacijent(userDetails);
-            return new ResponseEntity<>(getDTOList(erecepti), HttpStatus.OK);
+            List<Rezervacija> rezervacije = rezervacijaService.findAllByPacijent(userDetails);
+            return new ResponseEntity<>(getDTOList(rezervacije), HttpStatus.OK);
         } catch (Exception e) {
             e.printStackTrace();
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
     }
 
-    private List<EReceptDTO> getDTOList(List<ERecept> apoteke) {
-        List<EReceptDTO> list = new ArrayList<>();
-        for(ERecept eRecept: apoteke)
-            list.add(eReceptMapper.toDto(eRecept));
+    private List<RezervacijaDTO> getDTOList(List<Rezervacija> apoteke) {
+        List<RezervacijaDTO> list = new ArrayList<>();
+        for(Rezervacija rezervacija: apoteke)
+            list.add(rezervacijaMapper.toDto(rezervacija));
         return list;
     }
+
 }
