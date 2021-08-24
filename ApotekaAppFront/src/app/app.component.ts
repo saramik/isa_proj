@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { AuthentificationService } from './service/authentification.service';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +9,18 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'ApotekaAppFront';
+  constructor(private authService: AuthentificationService,
+    private router: Router){}
+
+  loggedIn():boolean{
+    if(this.authService.isLoggedIn()){
+      return true;
+    }
+    return false;
+  }
+
+  logout():void{
+    this.authService.logout();
+    this.router.navigate(['']);
+  }
 }
