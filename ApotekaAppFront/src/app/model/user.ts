@@ -1,4 +1,4 @@
-export class UserReg {
+export class User {
     email: string;
     password : string;
     ime : string;
@@ -7,8 +7,8 @@ export class UserReg {
     grad : string;
     drzava : string;
     broj : string;
-    
-    constructor(){
-        
-    }
+    penali : string;
+    alergijeLekovi : [];
+
+    constructor(){}
 }

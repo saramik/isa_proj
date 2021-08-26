@@ -18,6 +18,10 @@ import { LoginComponent } from './components/login/login.component';
 import { AuthentificationService } from './service/authentification.service';
 import { JwtUtilsService } from './service/jwt-utils.service';
 import { TokenInterceptorService } from './service/token-interceptor.service';
+import { MatCardModule} from '@angular/material/card';
+import { UserProfileComponent } from './components/user-profile/user-profile.component';
+import { ZakazivanjeDermatologPacijentComponent } from './components/zakazivanje-dermatolog-pacijent/zakazivanje-dermatolog-pacijent.component';
+import { ZakazivanjeSavetovanjaPacijentComponent } from './components/zakazivanje-savetovanja-pacijent/zakazivanje-savetovanja-pacijent.component';   
 
 
 @NgModule({
@@ -25,7 +29,10 @@ import { TokenInterceptorService } from './service/token-interceptor.service';
     AppComponent,
     LoginComponent,
     RegistrationComponent,
-    HomePageUserComponent
+    HomePageUserComponent,
+    UserProfileComponent,
+    ZakazivanjeDermatologPacijentComponent,
+    ZakazivanjeSavetovanjaPacijentComponent
   ],
   imports: [
     BrowserModule,
@@ -39,6 +46,7 @@ import { TokenInterceptorService } from './service/token-interceptor.service';
     MatFormFieldModule,
     MatInputModule,    
     ReactiveFormsModule,
+    MatCardModule,
     JwtModule.forRoot({
       config: {
         tokenGetter: JSON.parse(localStorage.getItem('currentUser') || '{"token":""}')?.token,

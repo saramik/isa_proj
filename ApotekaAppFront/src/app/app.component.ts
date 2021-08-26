@@ -12,6 +12,11 @@ export class AppComponent {
   constructor(private authService: AuthentificationService,
     private router: Router){}
 
+  ngOnInit(): void {
+    if(this.authService.isLoggedIn())
+      this.router.navigate(['/home-page-user']); 
+  }
+
   loggedIn():boolean{
     if(this.authService.isLoggedIn()){
       return true;

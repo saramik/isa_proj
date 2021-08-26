@@ -32,10 +32,10 @@ export class User {
 })
 export class AuthentificationService {
     
-  private readonly loginPath = 'https://localhost:8080/auth/login';
-  private readonly registrationPath = 'https://localhost:8080/auth/sign-up';
-  private readonly registerAdminPath = 'https://localhost:8080/auth/sign-up-admin';
-  private readonly usersPath = 'https://localhost:8080/users';
+  private readonly loginPath = 'http://localhost:8080/auth/login';
+  private readonly registrationPath = 'http://localhost:8080/auth/sign-up';
+  private readonly registerAdminPath = 'http://localhost:8080/auth/sign-up-admin';
+  private readonly usersPath = 'http://localhost:8080/patients';
  
   private headers = new HttpHeaders({'Content-Type': 'application/json'});
 
@@ -51,9 +51,10 @@ export class AuthentificationService {
           localStorage.setItem('currentUser', JSON.stringify({
             id: id,
             username: email,
-            //roles: this.jwtUtilsService.getRoles(token),
+            roles: this.jwtUtilsService.getRoles(token),
             token: token
           }));
+          console.log(localStorage);
           return true;
         }
         else {

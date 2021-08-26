@@ -1,0 +1,89 @@
+<div class="dashboard-container">
+    <button mat-raised-button color="primary" routerLink="/"><span class="material-icons">keyboard_backspace</span> Back</button>
+    <mat-card>
+        <h2 *ngIf="userNotFound; else edit" class="not-found">User Not Found</h2>
+        <ng-template #edit>
+          
+            <form *ngIf="!userNotFound" [formGroup]="userForm" (ngSubmit)="onSubmit()">
+                <h2>Edit profile information</h2>
+    
+                <div fxLayout="column">
+                    <mat-form-field class="full-width-input">
+                      <input matInput placeholder="Email" name="email" formControlName="email" readonly>
+                      <mat-error>
+                        Please provide a valid email
+                      </mat-error>
+                    </mat-form-field>
+                </div>
+
+                <div fxLayout="column">
+                    <mat-form-field class="full-width-input">
+                      <input matInput placeholder="Username" name="ime" formControlName="ime">
+                      <mat-error>
+                        Please provide a valid username
+                      </mat-error>
+                    </mat-form-field>
+                </div>
+
+                <div fxLayout="column">
+                    <mat-form-field class="full-width-input">
+                      <input matInput placeholder="Username" name="adresa" formControlName="adresa">
+                      <mat-error>
+                        Please provide a valid username
+                      </mat-error>
+                    </mat-form-field>
+                </div>
+
+                <div fxLayout="column">
+                    <mat-form-field class="full-width-input">
+                      <input matInput placeholder="Username" name="grad" formControlName="grad">
+                      <mat-error>
+                        Please provide a valid username
+                      </mat-error>
+                    </mat-form-field>
+                </div>
+
+
+                <div fxLayout="column">
+                    <mat-form-field class="full-width-input">
+                      <input matInput placeholder="Username" name="drzava" formControlName="drzava">
+                      <mat-error>
+                        Please provide a valid username
+                      </mat-error>
+                    </mat-form-field>
+                </div>
+
+                <div fxLayout="column">
+                    <mat-form-field class="full-width-input">
+                      <input matInput placeholder="Username" name="broj" formControlName="broj">
+                      <mat-error>
+                        Please provide a valid username
+                      </mat-error>
+                    </mat-form-field>
+                </div>
+
+                <div fxLayout="column">
+                    <mat-form-field class="full-width-input">
+                      <input matInput placeholder="Username" name="penali" formControlName="penali" readonly>
+                      <mat-error>
+                        Please provide a valid username
+                      </mat-error>
+                    </mat-form-field>
+                </div>
+
+                <div fxLayout="column">                  
+                    <select >
+                      <option *ngFor="l in lek">{{l}}</option>
+                    </select>
+              </div>
+
+                <mat-error *ngIf=submitionErrorUser style="margin-bottom: 10px;">
+                  Unable to update user profile, try different username.
+                </mat-error>
+
+                <button mat-raised-button color="primary" [disabled] = "userForm.invalid">Update</button>
+            </form>
+
+        </ng-template>
+    </mat-card>
+</div>

@@ -18,6 +18,8 @@ export class LoginComponent implements OnInit {
   constructor(private authService: AuthentificationService, private router: Router, private http: HttpClient) {}
 
   ngOnInit(): void {
+    if(this.authService.isLoggedIn())
+      this.router.navigate(['/home-page-user']); 
   }
 
   onSubmit(form : NgForm){
@@ -33,12 +35,11 @@ export class LoginComponent implements OnInit {
 
     this.authService.login(email, password).subscribe(
       resData => {
-        console.log(resData);
-        this.isLoading = false;
-        if(email!="praviadmin@admin.com")
-          this.router.navigate(['/home-user/clothes']);
-        else
-          this.router.navigate(['/home-admin']);
+        if(JSON.parse(localStorage.getItem('currentUser') || "")?.roles?.includes("ROLE_PACIJENT")){
+          this.router.navigate(['/home-page-user']); 
+        }else{
+          this.router.navigate(['/']); 
+        }
       },
       errorMessage => {
         console.log(errorMessage);
